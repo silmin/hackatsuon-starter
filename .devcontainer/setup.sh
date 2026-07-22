@@ -17,12 +17,13 @@ npm install -g wrangler
 # 3. 簡易プレビュー用の http-server
 npm install -g http-server
 
-# 完了メッセージ
-cat << 'EOF'
-
-========================================
- Hackatsuon Starter のセットアップ完了!
- README.md の手順に沿って進めてください
-========================================
+# 新しいターミナルを開くたびに案内を表示する
+cat << 'BANNER' >> "$HOME/.bashrc"
+echo ""
+echo "🐟 Hackatsuon Starter へようこそ!"
+echo "   環境チェック: claude --version && wrangler --version"
+echo "   次の一歩は README.md の Step 3 から"
+echo ""
+BANNER
 
 EOF
