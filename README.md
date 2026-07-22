@@ -84,14 +84,35 @@ http-server public -p 8080
 - 気に入らなかったら「もっと〇〇にして」と遠慮なく言う
 - エラーが出たら、エラーメッセージをそのままAIに貼り付ける
 
-## Step 5. 世界に公開する(Cloudflare Pages)
+## Step 5. コードを GitHub に反映する
 
-### 5-1. Cloudflare アカウントを作る(無料・クレカ不要)
+いま作ったものは、まだこの Codespace の中にしかありません。
+GitHub に push して、あなたの作品として残しましょう。ターミナルで:
+
+```bash
+git add -A
+git commit -m "アプリ作成"
+git push
+```
+
+> コミットメッセージ(-m のあと)は自由です。日本語でOK。
+
+push できたら、自分のリポジトリのページをブラウザで開いてみてください。
+あなたのコードが公開されています。世界中の誰でもこのコードを読んで、
+学んで、「こうしたらもっと良くなるよ」と提案できる状態です。
+OSSの講義で話した、あの世界の一員になったということです。
+
+これ以降コードは GitHub に残ります。
+Codespace を消しても作品は消えません。続きはいつでもやれます。
+
+## Step 6. 世界に公開する(Cloudflare Pages)
+
+### 6-1. Cloudflare アカウントを作る(無料・クレカ不要)
 
 1. https://dash.cloudflare.com/sign-up でアカウント作成
 2. メール認証を済ませる
 
-### 5-2. APIトークンを作る
+### 6-2. APIトークンを作る
 
 1. https://dash.cloudflare.com/profile/api-tokens を開く
 2. **「Create Token」** → 一番下の **「Create Custom Token」** の Get started
@@ -101,12 +122,12 @@ http-server public -p 8080
 4. **「Continue to summary」** → **「Create Token」**
 5. 表示されたトークンをコピー(この画面を閉じると二度と見られません!)
 
-### 5-3. アカウントIDを調べる
+### 6-3. アカウントIDを調べる
 
 1. https://dash.cloudflare.com を開き、左メニューの **Workers & Pages** をクリック
 2. 右側(または Account Details)に表示される **Account ID** をコピー
 
-### 5-4. デプロイ!
+### 6-4. デプロイ!
 
 ターミナルで(Claude Code を使っている場合は + で新しいターミナルを開く):
 
