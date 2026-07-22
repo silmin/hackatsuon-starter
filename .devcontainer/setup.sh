@@ -26,5 +26,3 @@ echo "   環境チェック: claude --version && wrangler --version"
 echo "   次の一歩は README.md の Step 3 から"
 echo ""
 BANNER
-
-EOF
