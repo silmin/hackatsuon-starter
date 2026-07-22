@@ -33,7 +33,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 **Q. APIキーが無効と言われる**
 - `export ANTHROPIC_API_KEY=...` のコピペミスが9割。前後に空白や改行が入っていないか確認
-- カードのキーを最初から貼り直す
+- API キーを最初から貼り直す
 - 貼り直したら `claude` を起動し直す
 
 **Q. Claude Code の返答が途中で止まる / 429 エラー**

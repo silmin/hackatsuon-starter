@@ -38,10 +38,10 @@
 
 ## Step 3. AI(Claude Code)を起動する
 
-配布された **APIキーカード** のキーを使います。ターミナルに以下を入力:
+配布された **APIキー** のキーを使います。ターミナルに以下を入力:
 
 ```bash
-export ANTHROPIC_API_KEY=ここにカードのキーを貼り付け
+export ANTHROPIC_API_KEY=sk-ant...（API キーをコピーして貼り付け）
 ```
 
 続けて、Claude Code を起動:
