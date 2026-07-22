@@ -77,4 +77,4 @@ export PATH="$HOME/.local/bin:$PATH"
 
 **Q. 家に帰ってから続きをやるには?**
 - https://github.com/codespaces → 自分の Codespace をクリックで再開
-- わからないことは Discord の #helpdesk へ
+- わからないことは Discord の #dev-help へ

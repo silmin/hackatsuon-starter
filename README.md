@@ -126,7 +126,7 @@ wrangler pages deploy public --project-name=あなたのプロジェクト名
 
 - まず [docs/troubleshooting.md](docs/troubleshooting.md) を見る
 - 会場ではスタッフに声をかける
-- 帰ってからは **Discord の #helpdesk** に、エラーメッセージのスクショと一緒に投稿
+- 帰ってからは **Discord の #dev-help** に、エラーメッセージのスクショと一緒に投稿
 
 ## 今日のあとも続けるには
 
