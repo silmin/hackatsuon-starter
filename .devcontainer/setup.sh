@@ -8,8 +8,9 @@ set -x
 curl -fsSL https://claude.ai/install.sh | bash
 
 # PATH を通す(bash / zsh 両対応)
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.profile"
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+echo 'export ANTHROPIC_MODEL="claude-sonnet-4-6"' >> "$HOME/.bashrc"
 
 # 2. wrangler(Cloudflare デプロイ用CLI)のインストール
 npm install -g wrangler
