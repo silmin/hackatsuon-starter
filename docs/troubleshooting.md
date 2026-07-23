@@ -9,16 +9,22 @@
 - ブラウザをリロードして再試行
 - https://github.com/codespaces を開き、既に作成済みの Codespace があればそれを開く
 
-**Q. 起動したけどターミナルが見当たらない**
-- 左上メニュー(≡) → Terminal → New Terminal
-- ショートカット: `Ctrl + @`(Windows)/ `Cmd + J`(Mac)
-
-**Q. セットアップが終わる前にターミナルを触ってしまった**
-- 以下を手動実行すればOK:
+**Q. ターミナルに🐟のようこそメッセージが出ない**
+- セットアップが終わっていません。1〜2分待って、`+` ボタンで**新しいターミナルを**開き直す
+- 5分以上待っても出ないときは、以下を手動実行:
   ```bash
   bash .devcontainer/setup.sh
   source ~/.bashrc
   ```
+
+**Q. テンプレートから直接 Codespace を開いてしまった(自分のリポジトリがない)**
+- そのまま作業を続けて大丈夫です。作品を保存するために、左のソース管理アイコン
+  (枝分かれマーク)→「Publish to GitHub」で自分のリポジトリとして公開してください
+- 公開しないまま放置すると、30日後に Codespace ごと作品が削除されます
+
+**Q. ターミナルが見当たらない**
+- 左上メニュー(≡) → Terminal → New Terminal
+- ショートカット: `Ctrl + @`(Windows)/ `Cmd + J`(Mac)
 
 ## Claude Code まわり
 
@@ -31,14 +37,16 @@ source ~/.bashrc
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
+**Q. 起動時の質問で「2. No (recommended)」を選んでしまい、ログイン画面になった**
+- `Esc` や `Ctrl + C` で抜けて、もう一度 `claude` を起動
+- 「Do you want to use this API key?」では **1. Yes** を選びます(recommended に釣られない)
+
 **Q. APIキーが無効と言われる**
 - `export ANTHROPIC_API_KEY=...` のコピペミスが9割。前後に空白や改行が入っていないか確認
-- API キーを最初から貼り直す
-- 貼り直したら `claude` を起動し直す
+- 配布されたキーを最初から貼り直し、`claude` を起動し直す
 
 **Q. Claude Code の返答が途中で止まる / 429 エラー**
 - 混雑しています。1〜2分待ってから続きを頼んでください
-- (会場全体で同じ組織のキーを使っているため、同時利用が集中すると起きます)
 
 **Q. AIが作ったものが動かない**
 - エラーメッセージやスクリーンショットの内容をそのまま AI に貼り付けて「直して」と言う
@@ -46,28 +54,32 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ## プレビューまわり
 
-**Q. `http-server public -p 8080` してもページが開かない**
+**Q. `http-server -p 8080` してもページが開かない**
 - 画面右下の通知「ポート8080が利用可能です」から Open を押す
 - または「ポート」タブ(ターミナル横)→ 8080 の地球儀アイコンをクリック
 - 変更が反映されないときはブラウザをスーパーリロード(`Ctrl+Shift+R` / `Cmd+Shift+R`)
 
-## デプロイ(Cloudflare / wrangler)まわり
+## 公開(GitHub Pages)まわり
 
-**Q. `Authentication error` / `10000` エラー**
-- `CLOUDFLARE_API_TOKEN` と `CLOUDFLARE_ACCOUNT_ID` の export をやり直す
-- トークンの Permissions が「Account / Cloudflare Pages / Edit」になっているか確認
-- トークンを作り直すのが一番早いことも多いです
+**Q. Pages を有効にしたのに、URLを開くと404**
+- 1〜2分待ってからスーパーリロード(`Ctrl+Shift+R` / `Cmd+Shift+R`)
+- Settings → Pages で Branch が **main / (root)** になっているか確認
+- リポジトリ直下に `index.html` があるか確認(フォルダの中だと表示されません)
 
-**Q. `Project name must be...` と怒られる**
-- プロジェクト名は半角英数字とハイフンのみ。日本語・スペース・アンダースコア不可
+**Q. push したのに、公開ページが古いまま**
+- 反映まで1〜2分かかります。待ってからスーパーリロード
+- リポジトリの「Actions」タブで pages のビルドが動いているか見られます
 
-**Q. `wrangler login` を実行してしまい、ブラウザ認証から戻ってこない**
-- Codespaces では `wrangler login` は使いません。`Ctrl + C` で中断し、
-  README の 5-2〜5-4(APIトークン方式)でやり直してください
+**Q. ページは開くけど、見た目が崩れる / 画像が出ない**
+- CSSや画像を `/style.css` のような **絶対パス**で参照していると壊れます
+  (公開URLが `ユーザー名.github.io/リポジトリ名/` 配下のため)
+- AI に「参照を相対パスに直して」と頼めば直ります
 
-**Q. デプロイは成功したのに、URLを開くと古いページが表示される**
-- 数十秒待ってからスーパーリロード
-- それでもダメなら、もう一度 `wrangler pages deploy ...` を実行
+## GitHub への push まわり
+
+**Q. `git push` が拒否される / 認証エラーになる**
+- Codespace は起動時に GitHub 認証が済んでいるので、通常は追加操作なしで push できます
+- 失敗するときは一度ブラウザをリロードして Codespace を開き直し、再度 `git push`
 
 ## その他
 
@@ -77,4 +89,5 @@ export PATH="$HOME/.local/bin:$PATH"
 
 **Q. 家に帰ってから続きをやるには?**
 - https://github.com/codespaces → 自分の Codespace をクリックで再開
-- わからないことは Discord の #dev-help へ
+- 再開後は `export ANTHROPIC_API_KEY=...` からやり直し(環境変数は再起動で消えます)
+- わからないことは Discord の #helpdesk へ
